@@ -46,7 +46,16 @@ def main():
             tomli_w.dump(pyproject, f)
         subprocess.run(["git", "add", "pyproject.toml"])
         subprocess.run(["git", "commit", "-m", f"Djade {version}"])
-        subprocess.run(["git", "tag", f"{version}"])
+        subprocess.run(
+            [
+                "git",
+                "tag",
+                "--annotate",
+                f"{version}",
+                "--message",
+                f"Version {version}",
+            ]
+        )
 
 
 if __name__ == "__main__":
