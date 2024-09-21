@@ -45,7 +45,7 @@ def main():
         with open(Path(__file__).parent / "pyproject.toml", "wb") as f:
             tomli_w.dump(pyproject, f)
         subprocess.run(["git", "add", "pyproject.toml"])
-        subprocess.run(["git", "commit", "-m", f"black {version}"])
+        subprocess.run(["git", "commit", "-m", f"Djade {version}"])
         subprocess.run(["git", "tag", f"{version}"])
 
 
