@@ -1,0 +1,33 @@
+name: Mirror
+
+on:
+  schedule:
+  - cron: '43 5 * * *'
+  repository_dispatch:
+      types: [pypi_release]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Mirror
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v1
+      with:
+        enable-cache: true
+
+    - name: Configure Git
+      run: |
+        git config --global user.name 'Github Actions'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+
+    - run: python mirror.py
+
+    - run: |
+        git remote set-url origin https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY
+        git push origin HEAD:refs/heads/main --tags
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
