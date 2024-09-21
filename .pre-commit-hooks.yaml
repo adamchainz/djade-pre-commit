@@ -1,0 +1,7 @@
+- id: djade
+  name: Djade
+  description: "Djade: a Django template formatter"
+  entry: djade
+  language: python
+  minimum_pre_commit_version: 2.9.2
+  files: '.*/templates/.*'
