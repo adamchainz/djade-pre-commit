@@ -2,5 +2,5 @@
 name = "djade-pre-commit"
 version = "0.0.0"
 dependencies = [
-    "djade==1.4.0",
+    "djade==1.5.0",
 ]
