@@ -43,4 +43,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-        run: gh workflow enable toot.yml
+        run: gh workflow enable mirror.yml
